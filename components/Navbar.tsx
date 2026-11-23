@@ -39,7 +39,7 @@ export default function Navbar() {
             aria-label="Accueil"
             className="justify-self-start"
           >
-            <img src="/logo/MElliot.svg" alt="Logo" className="h-4 w-auto dark:invert" />
+            <img src="/logo/manoait.svg" alt="Logo" className="h-6 w-auto dark:invert" />
           </button>
 
           {/* Onglets desktop : alignés en bas de la barre */}

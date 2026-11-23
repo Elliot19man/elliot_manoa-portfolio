@@ -166,7 +166,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.4 }}
-            className="group rounded-2xl border border-stone-200 bg-stone-50 p-3 text-center transition-colors hover:border-[#FF4D1C] md:p-6 md:text-left dark:border-stone-800 dark:bg-stone-900 dark:hover:border-[#FF4D1C]"
+            className="group rounded-2xl border border-stone-100 bg-stone-50 p-3 text-center transition-colors hover:border-[#FF4D1C] md:p-6 md:text-left dark:border-stone-800 dark:bg-stone-900 dark:hover:border-[#FF4D1C]"
           >
             <span
               className="mx-auto grid size-9 place-items-center rounded-xl text-white md:mx-0 md:size-11"

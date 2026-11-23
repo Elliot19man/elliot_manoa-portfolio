@@ -96,27 +96,21 @@ export default function HomePage() {
         </div>
 
         {/* --- COLONNE DE DROITE (photo en forme de blob) --- */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="relative h-72 w-72 shrink-0 md:h-[400px] md:w-[400px]"
-        >
-          <div
-            className="absolute inset-0 animate-pulse rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] opacity-30 blur-3xl"
-            style={{ backgroundColor: ACCENT }}
-          />
-
-          <div className="relative h-full w-full overflow-hidden rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] shadow-2xl">
+        {/* --- COLONNE DE DROITE --- */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="relative h-72 w-72 shrink-0 md:h-[460px] md:w-[460px]"
+          >
             <Image
-              src="/images/manoa.jpg"
+              src="/images/manoa.png"
               alt="RAMIARANARIVO Manoa Elliot"
               fill
-              className="scale-110 object-cover"
+              className="object-contain"
               priority
             />
-          </div>
-        </motion.div>
+          </motion.div>
       </div>
     </div>
   );

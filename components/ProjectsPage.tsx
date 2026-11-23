@@ -90,11 +90,11 @@ const webProjects = [
 /* --- APPLICATIONS MOBILE (style Play Store) --- */
 const mobileApps = [
   {
-    name: "Mon Budget",
+    name: "ISRAS",
     category: "Finance",
-    icon: "/projects/app-1/icon.png",
+    icon: "/logo/manoait.png",
     description:
-      "Suivez vos dépenses, fixez des objectifs et visualisez votre épargne simplement.",
+      "Enregistrement des activités entre les contribuables et fournisseurs",
     screens: [
       "/projects/app-1/1.png",
       "/projects/app-1/2.png",

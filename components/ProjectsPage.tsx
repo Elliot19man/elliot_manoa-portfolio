@@ -92,7 +92,7 @@ const mobileApps = [
   {
     name: "ISRAS",
     category: "Finance",
-    icon: "/logo/manoait.png",
+    icon: "/logo/DGI.png",
     description:
       "Enregistrement des activités entre les contribuables et fournisseurs",
     screens: [

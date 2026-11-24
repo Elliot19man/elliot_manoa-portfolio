@@ -139,38 +139,75 @@ export default function Navbar() {
         </div>
       </main>
 
-      {/* Onglets mobile (barre du bas) */}
-      <nav className="fixed bottom-0 left-0 z-[100] w-full border-t border-stone-200 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden dark:border-stone-800 dark:bg-stone-950/95">
-        <div className="flex items-center justify-around p-2">
-          {items.map(({ title, icon: Icon }) => {
+      {/* Onglets mobile (barre du bas) : même style que desktop, inversé */}
+      <nav
+        role="tablist"
+        className="fixed bottom-0 left-0 z-[100] w-full bg-stone-100 pb-[env(safe-area-inset-bottom)] md:hidden dark:bg-stone-900
+                   [--tab-bg:var(--color-white)] dark:[--tab-bg:var(--color-stone-950)]"
+      >
+        <div className="flex items-stretch px-4">
+          {items.map(({ title, icon: Icon }, i) => {
             const isActive = active === title;
+            const prevActive = i > 0 && active === items[i - 1].title;
             return (
-              <button
-                key={title}
-                type="button"
-                onClick={() => select(title)}
-                className={`relative flex flex-1 flex-col items-center gap-1 py-2 text-[10px] font-semibold tracking-wide transition-colors ${
-                  isActive
-                    ? "text-indigo-700 dark:text-indigo-300"
-                    : "text-stone-500 dark:text-stone-400"
-                }`}
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId="mobile-tab-indicator"
-                    className="absolute inset-0 rounded-xl bg-indigo-50 ring-1 ring-indigo-200 dark:bg-white/10 dark:ring-white/20"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+              <div key={title} className="flex flex-1 items-stretch">
+                {/* Séparateur (masqué autour de l'onglet actif) */}
+                {i > 0 && (
+                  <span
+                    aria-hidden
+                    className={`my-4 w-px bg-stone-300 transition-opacity dark:bg-stone-700 ${
+                      isActive || prevActive ? "opacity-0" : "opacity-100"
+                    }`}
                   />
                 )}
-                <span className="relative z-10 flex flex-col items-center gap-1">
-                  <Icon
-                    size={22}
-                    variant={isActive ? "Bold" : "Outline"}
-                    color="currentColor"
-                  />
-                  {title}
-                </span>
-              </button>
+
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => select(title)}
+                  className={`relative flex h-16 flex-1 flex-col items-center justify-center gap-1 text-[10px] font-semibold tracking-wide transition-colors ${
+                    isActive
+                      ? "text-stone-900 dark:text-white"
+                      : "text-stone-500 dark:text-stone-400"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="mobile-tab-indicator"
+                      className="absolute inset-0 rounded-b-xl bg-[var(--tab-bg)]"
+                      transition={{ type: "spring", bounce: 0.15, duration: 0.45 }}
+                    >
+                      {/* Coin concave gauche */}
+                      <span
+                        aria-hidden
+                        className="absolute -left-4 top-0 size-4"
+                        style={{
+                          background:
+                            "radial-gradient(circle at bottom left, transparent 15.5px, var(--tab-bg) 16px)",
+                        }}
+                      />
+                      {/* Coin concave droit */}
+                      <span
+                        aria-hidden
+                        className="absolute -right-4 top-0 size-4"
+                        style={{
+                          background:
+                            "radial-gradient(circle at bottom right, transparent 15.5px, var(--tab-bg) 16px)",
+                        }}
+                      />
+                    </motion.span>
+                  )}
+                  <span className="relative z-10 flex flex-col items-center gap-1">
+                    <Icon
+                      size={22}
+                      variant={isActive ? "Bold" : "Outline"}
+                      color="currentColor"
+                    />
+                    {title}
+                  </span>
+                </button>
+              </div>
             );
           })}
         </div>
